@@ -1,0 +1,223 @@
+@import "./reset.scss";
+
+body {
+    height: 100vh;
+    background-color: #DCE6D1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.first-phone {
+    height: 95%;
+    width: 400px;
+    min-width: 400px;
+    background-color: black;
+    border-radius: 50px;
+    padding: 50px 8px;
+    box-sizing: border-box;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content__top {
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+    padding: 10px 20px;
+    background: radial-gradient(at 30% 50%, #F3F2D7, #CDE0FE);
+    border-radius: 20px;
+    .head {
+        font-size: 18px;
+    }
+}
+
+.content__main {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    .main__title {
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 60px;
+        text-align: left;
+    }
+}
+
+
+.main__progress {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .progress__percent {
+        font-size: 40px;
+    }
+    .progress-bar {
+        width: 100%;
+        height: 15px;
+        appearance: none;
+        &::-webkit-progress-bar {
+            background: white;
+            border-radius: 15px;
+            border: 1px solid black;
+        }
+        &::-webkit-progress-value {
+            background: black;
+            border-radius: 15px;
+        }
+    }
+    .progress__date {
+        display: flex;
+        justify-content: space-between;
+        margin-top: -15px;
+    }
+    .progress__footer {
+        padding: 20px;
+        font-size: 18px;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 20px;
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+
+.content__footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    background-color: #F5F2EF;
+    border-radius: 20px 20px 40px 40px;
+    .footer__icons {
+        width: 150px;
+        height: 40px;
+        padding: 10px 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333333;
+        gap: 10px;
+        border-radius: 30px;
+        i {
+            background-color: white;
+            border-radius: 20px;
+            padding: 10px;
+        }
+    }
+    .footer__price {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 40px;
+        background-color: #FFDD2C;
+        border-radius: 15px;
+        border: 1px solid black;
+        transform: rotate(35deg);
+        margin-top: 10px;
+    }
+}
+
+
+.second-phone {
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    height: 95%;
+    width: 400px;
+    min-width: 400px;
+    background-color: black;
+    border-radius: 50px;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+.header {
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+        display: none; /* 크롬, 사파리, 오페라, 엣지 */
+    }
+    .header__list {
+        display: flex;
+        color: white;
+        gap: 10px;
+        width: max-content;
+        .header__list-item {
+            border: 1px solid rgba($color: white, $alpha: 0.5);
+            border-radius: 25px;
+            padding: 10px;
+            white-space: nowrap;
+        }
+        .header__list-item--inverted {
+            background-color: white;
+            color: black;
+        }
+    }
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    // grid-template: / repeat(2, 1fr);
+    gap: 10px;
+    margin: 20px 0px;
+    .cards__card {
+        background-color: white;
+        padding: 10px;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        // justify-content: space-evenly;
+
+        &:first-child {
+            background-color: #292D33;
+            border: 1px solid white;
+            .card__title {
+                color:white;
+            }
+        }
+        &:nth-child(2) {
+            background-color: #F6F3F0;
+        }
+        &:nth-child(3) {
+            background-color: #FBFFCA;
+        }
+        &:nth-child(4) {
+            background-color: #B3A0F6;
+        }
+        &:nth-child(5) {
+            background-color:#FFD4D4
+        }
+        &:nth-child(6) {
+            background-color: #D0FEDE;
+        }
+        &:nth-child(3n) {
+            grid-column: span 2;
+        }
+        .card__title {
+            font-size: 28px;
+        }
+        .card__footer {
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            span {
+                border-radius: 15px;
+                border: 1px solid black;
+                padding: 10px 15px;
+            }
+            .card__price {
+                background-color: #FFDD2C;
+                }
+            .card__length {
+                background-color: white;
+            }
+        }
+    }
+}
