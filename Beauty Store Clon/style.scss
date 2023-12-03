@@ -1,0 +1,122 @@
+@import "./reset.scss";
+
+$borderColor: rgba(0, 0, 0, 0.4);
+$borderWidth: 2px;
+// 그리드 컨테이너와 자식 컨테이너의 배경색을 각각 설정하고 갭을 주어서
+// 컨테이너의 레이아웃 테두리를 만듦 (그것을 위한 변수)
+
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 10fr;
+}
+
+.header {
+    .header__nav {
+        ul {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr) 1.5fr repeat(5, 1fr);
+            background-color: $borderColor;
+            gap: 2px;
+            .header__tab {
+                padding: 20px 0px;
+                background-color: white;
+                text-align: center;
+                font-weight: 300;
+                font-size: 14px;
+                &:nth-child(6) {
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+    .header__breadcrumbs {
+        border-bottom: $borderWidth solid $borderColor;
+        border-top: $borderWidth solid $borderColor;
+        padding: 10px 50px;
+        font-size: 14px;
+        .header__crumbs {
+            font-weight: 600;
+            &:last-child {
+                opacity: 0.6;
+            }
+        }
+    }
+}
+
+.product {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    background-color: $borderColor;
+    gap: $borderWidth;
+    .product__image {
+        background-image: url("https://source.unsplash.com/random");
+        background-size: cover;
+    }
+    .product__info {
+        display: grid;
+        grid-template-rows: 1.5fr 1fr;
+        gap: $borderWidth;
+        .product__header {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0px 50px;
+            gap: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            .product__category {
+                font-size: 18px;
+            }
+            .product__title {
+                font-size: 50px;
+            }
+            .product__add-to-cart {
+                display: flex;
+                gap: 60px;
+                margin-top: 50px;
+                font-size: 30px;
+                .product__quantity {
+                    display: flex;
+                    gap: 5px;
+                    .product__minus {
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+    }
+    .product__footer {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: $borderWidth;
+        & > div {
+            background-color: white;
+        }
+        .product__description p {
+            width: 70%;
+            font-size: 14px;
+            margin: 0 auto;
+            padding: 25px 0px;
+            line-height: 20px;
+        }
+        .product__faq {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 5px;
+            font-weight: bold;
+            padding: 20px 0px;
+            .product__question {
+                width: 70%;
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                border-bottom: $borderWidth solid $borderColor;
+            }
+        }
+    }
+}
