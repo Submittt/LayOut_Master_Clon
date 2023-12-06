@@ -1,0 +1,78 @@
+@import "./reset.scss";
+
+body {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 50px 1fr 50px;
+    grid-template-rows: 50px 1fr 50px;
+    .bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 400;
+        font-size: 18px;
+        text-transform: uppercase;
+        &:first-child,
+        &:last-child {
+            grid-column: span 3;
+        }
+        &:nth-child(2) span {
+            transform: rotateZ(-90deg);
+        }
+        &:nth-child(4) span {
+            transform: rotateZ(90deg);
+        }
+    }
+    .main {
+        overflow-y: scroll;
+        padding: 0px 30px 30px 30px;
+        border: 2px solid black;
+        box-sizing: border-box;
+        .nav ul {
+            display: grid;
+            grid-template-rows: repeat(4, 1fr);
+            .main__nav-item {
+                padding: 15px;
+                text-align: center;
+                border-bottom: 2px solid black;
+                text-transform: uppercase;
+                font-size: 25px;
+                font-weight: bold;
+            }
+        }
+        .main__filter {
+            margin: 20px 0px;
+            display: flex;
+            justify-content: space-between;
+            text-transform: uppercase;
+            font-weight: bold;
+            .filter__types {
+                display: flex;
+                gap: 10px;
+                & span:not(.filter__name--selected) {
+                    color: grey;
+                } // :not() 는 선택자를 제외한 다른 요소들에 스타일을 적용
+            }
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            .project {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                .project__img {
+                    width: 100%;
+                }
+                .projects__name {
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+            } 
+        }
+    }
+    .main::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+    }
+}
