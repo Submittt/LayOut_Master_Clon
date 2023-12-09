@@ -1,0 +1,119 @@
+@import "./reset.scss";
+
+$bg: #f0f0f0;
+$accent: #c7c2cc;
+$borderWidth: 2px;
+
+@keyframes slide { //keyframe은 애니메이션 효과를 주기위한 기능
+    0%{ // 0%에서 시작
+        transform: translateY(-3000%) rotateZ(90deg);
+    }   // translate > 좌표설정(이동) rotate > 방향회전
+    100%{ // 100%에서 종료
+        transform: translateY(calc(0% - 10px)) rotateZ(90deg);
+    }   // calc > 연산 계산기능
+}
+
+body {
+    display: grid;
+    gap: $borderWidth;
+    background-color: black;
+    grid-template-rows: 10% 10% 45% 35%;
+    grid-template-columns: 0.3fr repeat(4, 1fr);
+    height: 100vh;
+    div {
+        background-color: $bg;
+        img {
+            width: 100%;
+            height: 100%;
+        }    
+    }
+    .logo {
+        grid-area: 1 / 1 / span 2 / span 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 98px;
+        }
+    .title {
+        grid-column: 3 / span 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 60px;
+        font-weight: bold;
+        text-transform: uppercase;
+        white-space: nowrap;
+        overflow: auto;
+    }
+    .banner {
+        grid-row: 3 / span 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        color: white;
+        overflow: hidden; // 크기가 넘쳐서 오버플로 되는 부분은 숨김
+        position: relative;
+        span {
+            width: max-content; // 콘텐츠가 오버플로 되어도 줄바꿈되지 않고 콘텐츠 길이만큼 너비 지정
+            font-size: 22px;
+            font-weight: bold;
+            position: absolute;
+            animation: slide 5s linear infinite;
+        }// .banner와 span에 포지션을 부여한 이유는
+        //콘텐츠가 가려지는 효과를 주기 위함
+    }
+    .nav-btn {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        padding: 20px;
+        font-weight: bold;
+        .nav-btn__title {
+            font-size: 25px;
+        }
+        .nav__desc {
+            font-size: 14px;
+        }
+    }
+    .post {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 50px;
+        &.post--big { // &.className 으로 클래스 이중선택 후 독립적 사용 가능
+            grid-column: span 3;        
+            .post__title {
+                font-size: 148px;
+            }
+        }
+        .post__title {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .post__desc {
+            font-size: 17px;
+            line-height: 20px;
+        }
+    }
+    .featured {
+        display: flex;
+        padding: 25px;
+        background-color: $accent;
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 30px 45px;
+            background-color: $bg;
+            border: 2px solid black;
+            h3 {
+                font-size: 43px;
+                font-weight: 600;
+            }
+        }
+    }
+}
