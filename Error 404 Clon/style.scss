@@ -1,0 +1,170 @@
+@import "./reset.scss";
+
+$green: #01ff00;
+$grey: #d9d9d9;
+$lightGrey: #f0f0f0;
+
+@keyframes top-slide {
+    0%{
+        transform: translateX(-25%);
+    }
+    50%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(25%);
+    }
+}
+
+@keyframes right-slide {
+    0%{
+        transform: translateY(-4500%) rotateZ(90deg);
+    }
+    50%{
+        transform: translateY(0%) rotateZ(90deg);
+    }
+    100%{
+        transform: translateY(4500%) rotateZ(90deg);
+    }
+}
+
+@keyframes bottom-slide {
+    0%{
+        transform: translateX(25%) rotateZ(180deg);
+    }
+    50%{
+        transform: translateX(0%) rotateZ(180deg);
+    }
+    100%{
+        transform: translateX(-25%) rotateZ(180deg);
+    }
+}
+
+@keyframes left-slide {
+    0%{
+        transform: translateY(4500%) rotateZ(90deg);
+    }
+    50%{
+        transform: translateY(0%) rotateZ(90deg);
+    }
+    100%{
+        transform: translateY(-4500%) rotateZ(90deg);
+    }
+}
+
+
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    grid-template-rows: 50px 1fr 50px;
+    background-color: $green;
+}
+
+main {
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 2px;
+    height: calc(100vh - 100px);
+    div {
+        background-color: $grey;
+        overflow: hidden;
+        &:has(img) { // :has() 선택자는 지정요소를 갖는 모든 요소를 선택
+            padding: 15px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &:nth-child(5) {
+            grid-column:  span 2;
+        }
+        &:nth-child(7) {
+            grid-area: span 4 / span 2 ;
+        }
+        &:nth-child(8) {
+            grid-column: span 4;
+        }
+        &:nth-child(9) {
+            grid-column: span 2;
+        }
+        &:nth-child(10), 
+        &:nth-child(11),
+        &:nth-child(12),
+        &:nth-child(14) {
+            grid-area: span 2 / span 2;
+        }
+        &:nth-child(13) {
+            grid-area: span 2 / span 4;
+        }
+
+        // border-radius
+        &:nth-child(11) {
+            border-bottom-right-radius: 15px;
+        }
+        &:nth-child(12) {
+            border-bottom-left-radius: 15px;
+        }
+        &:nth-child(13) {
+            border-top-right-radius: 15px;
+        }
+        &:nth-child(14) {
+            border-top-left-radius: 15px;
+        }
+
+        // background color 
+        &:nth-child(n+7):nth-child(-n+14) { // 8번부터 14번까지 범위 선택
+            background-color: $lightGrey;
+        }
+    }
+    .title {
+        grid-area: 1 / 1  / span 2 / -1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 172px;
+        font-weight: 600;
+    }
+    .nav-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        font-weight: 600;
+    }
+}
+
+.bar {
+    background-color: $green;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    span {
+        font-weight: 600;
+        font-size: 20px;
+        position: absolute;
+        width: max-content;
+    }
+    &:first-child, 
+    &:last-child {
+        grid-column: span 3;
+        margin: 0px 50px 0px;
+    }
+    &:first-child span {
+        animation: top-slide 10s linear infinite;
+    }
+    &:nth-child(2) span {
+        animation: left-slide 10s linear infinite;
+    }
+    &:nth-child(4) span {
+        animation: right-slide 10s linear infinite;
+    }
+    &:last-child span{
+        animation: bottom-slide 10s linear infinite;
+    }
+}
