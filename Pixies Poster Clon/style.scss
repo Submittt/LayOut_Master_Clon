@@ -1,0 +1,65 @@
+@import "./reset.scss";
+
+$white: #dee1d6;
+$green: #5ebc44;
+
+body {
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.poster {
+    background-color: $green;
+    width: 38%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 30% 70%;
+    gap: 10px;
+    .top {
+        display: grid;
+        grid-template-rows: 0.5fr 1fr;
+        grid-template-columns: 2.2fr 1fr;
+        padding: 20px;
+        row-gap: 30px;
+        .top__box {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            font-weight: 600;
+            font-size: 14px;
+            &:last-child {
+                align-self: center;
+                font-size: 18px;
+                color: white;
+            }
+            h1 {
+                font-size: 110px;
+            }
+        }
+    }
+    .bottom {
+        overflow: hidden; // 오버플로우 영역 숨김
+       .circles {
+        transform: scale(1.1); // 아규먼트 값 만큼 늘리는 함수
+        display: grid;
+        grid-template: repeat(11, 1fr) / repeat(11, 1fr);
+        gap: 5px;
+        background-color: black;
+        height: 100%;
+        .circle {
+            background-color: $green;
+            border-radius: 50%;
+            @for $i from 1 through 9 {
+                @for $j from (11*$i)+2 through (11*$i)+1+$i {
+                &:nth-child(#{$j}) {
+                background-color: $white;
+                }
+                }
+                }
+            }
+       }
+    }
+}
