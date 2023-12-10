@@ -1,0 +1,81 @@
+@import "./reset.scss";
+
+$bg: #dde1d3;
+$blue: #00a0c8;
+$red: #d03022;
+$burntRed: #573533;
+
+body {
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.poster {
+    width: 37%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 60px 1fr 60px;
+    grid-template-rows: 60px 1.2fr 60px 1fr 60px 1.2fr 60px;
+    background-color: $bg;
+    padding: 20px;
+    box-sizing: border-box;
+    font-weight: 600;
+    //background colors
+    .top-left,
+    .top-top,
+    .top-right,
+    .center-bottom {
+        background-color: $blue;
+    }
+    .center-top,
+    .bottom-left,
+    .bottom-bottom,
+    .bottom-right {
+        background-color: $red;
+    }
+    .center-left,
+    .center-right {
+        background-color: $burntRed;
+    }
+    // grid column and row
+    .top-left,
+    .top-right {
+        grid-row: span 2;
+    }
+    .center-left,
+    .center-right {
+        grid-row: span 3;
+    }
+    .bottom-left,
+    .bottom-right {
+        grid-row: span 2;
+    }
+    //style
+    .center-center {
+        padding: 10px;
+        h1 {
+            font-size: 80px;
+        }
+    }
+    .top-bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 10px;
+        gap: 5px;
+    }
+    .bottom-top {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        .description {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    }
+}
